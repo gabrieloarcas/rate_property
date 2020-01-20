@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<strong><h4><%= link_to 'Create New Property', new_property_path %></h4></strong><br>
+
+<% @properties.each do |property| %>
+
+  <% if property.errors.any? %>
+    <div id="errors">
+      <h3><%= pluralize(property.errors.count, "error") %> ..something went wrong </h3>
+    </div>
+    <ul>
+      <% property.errors.full_messages.each do |msg| %>
+        <li> <%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= link_to 'Show', property %>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_property_path(property) %>
+    <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <br>
+  <h3>Address: <%= link_to property.address, property %></h3>
+  <p> <%= property.reviews.count %> Reviews </p>
+
+  <% if property.reviews.present? %>
+    <p>Reviews</p>
+    <% property.reviews.limit(3).each do |review| %>
+    <div class="container">
+      <p><%= time_ago_in_words(review.created_at) %> ago</p>
+      <div class = "text-info">
+        <p>From: <%= review.stayed_from.strftime('%b, %Y') %></p>
+        <p>To: <%= review.stayed_to.strftime('%b, %Y') %></p>
+        <p><%= excerpt(review.body, '', radius: 20) %></p>
+      </div>
+    </div>
+    <% end %>
+  <% else %>
+    <h4>No reviews yet</h4>
+  <% end %>
+
+  <%= link_to 'Leave a review', property_path(property) %>
+  <hr>
+
+<% end %>
+
+

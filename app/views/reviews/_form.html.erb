@@ -1,0 +1,20 @@
+<%= form_for([@property, @property.reviews.build]) do |f| %>
+
+  <p>
+    <%= f.label :stayed_from %>
+    <%= f.date_field :stayed_from %>
+  </p>
+  <p>
+    <%= f.label :stayed_to %>
+    <%= f.date_field :stayed_to %>
+  </p>
+  <p>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %>

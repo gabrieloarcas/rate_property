@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong>Address:</strong>
+  <%= @property.address %>
+</p>
+
+<%# Render the reviews %>
+
+<p> <%= @property.reviews.count %> Reviews </p>
+<% if @property.reviews.present? %>
+  <%= render @property.reviews%>
+<% else %>
+  <h4>No reviews yet</h4>
+<% end %>
+
+<%# Render the form for reviews %>
+<h4> Leave a review: </h4>
+<%= render "reviews/form" %>
+
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
+

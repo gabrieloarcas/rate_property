@@ -1,0 +1,12 @@
+<p>From: <%= review.stayed_from.strftime('%b, %Y') %></p>
+<p>To: <%= review.stayed_to.strftime('%b, %Y') %></p>
+<p><%= review.body %></p>
+<p><%= time_ago_in_words(review.created_at) %> Ago</p>
+
+<% if user_signed_in? %>
+  <p><%= link_to 'Delete', [review.property, review], method: :delete, class: "button", 
+  data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+
+
