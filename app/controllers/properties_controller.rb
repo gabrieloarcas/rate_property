@@ -18,6 +18,7 @@ class PropertiesController < ApplicationController
     @property = Property.new
   # Create a review as well
     @property.reviews.build
+    @property = current_user.properties.build
   end
 
   # GET /properties/1/edit
@@ -27,7 +28,7 @@ class PropertiesController < ApplicationController
   # POST /properties
   # POST /properties.json
   def create
-    @property = Property.new(property_params)
+    @property = current_user.properties.build(property_params)
 
     respond_to do |format|
       if @property.save
@@ -73,7 +74,7 @@ class PropertiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
       params.require(:property).permit(
-        :address, 
+        :address, :user_id, 
         reviews_attributes: [:id, :property_id, :stayed_from, :stayed_to, :body]
       )
     end
