@@ -4,4 +4,5 @@ class Property < ApplicationRecord
   accepts_nested_attributes_for :reviews
 
   belongs_to :user
+  ratyrate_rateable 'property_score'
 end

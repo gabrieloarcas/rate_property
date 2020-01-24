@@ -43,6 +43,14 @@
   <%= link_to 'Leave a review', property_path(property) %>
   <hr>
 
+<!-- Read Only Rating -->
+
+  Property Rating: <%= rating_for property, "property_score",
+  readOnly: true,
+  path: 'star_icons',
+  enable_half: true
+  %>
+
 <% end %>
 
 

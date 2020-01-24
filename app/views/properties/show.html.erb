@@ -14,6 +14,17 @@
   <h4>No reviews yet</h4>
 <% end %>
 
+<% if current_user %>
+      Property Rating: <%= rating_for @property, "property_score",
+      disable_after_rate: false,
+      cancel_place: 'right',
+      path: 'star_icons',
+      enable_half: true,
+      half_show: true
+     
+      %>
+    <% end %>
+
 <%# Render the form for reviews %>
 <h4> Leave a review: </h4>
 <%= render "reviews/form" %>
@@ -21,3 +32,4 @@
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
 
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %> 
