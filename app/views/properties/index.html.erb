@@ -20,6 +20,24 @@
     <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <br>
+
+  <!-- Read Only Rating -->
+
+  Property Rating: <%= rating_for property, "property_score",
+  readOnly: true,
+  path: 'star_icons',
+  enable_half: true
+  %>
+
+  <!-- Show the author, update and created timestamps -->
+
+  <div>Created <%= time_ago_in_words(property.created_at) %> ago, 
+    by  <%= property.user_id  && property.user.nickname%>. 
+    <% if property.updated_at != property.created_at %> <!-- Showing updates only when updates are made -->
+    Edited <%= time_ago_in_words(property.updated_at)%> ago
+    <% end%>
+  </div>
+
   <h3>Address: <%= link_to property.address, property %></h3>
   <p> <%= property.reviews.count %> Reviews </p>
 
@@ -40,15 +58,9 @@
   <% end %>
 
   <%= link_to 'Leave a review', property_path(property) %>
-  <hr>
 
-<!-- Read Only Rating -->
 
-  Property Rating: <%= rating_for property, "property_score",
-  readOnly: true,
-  path: 'star_icons',
-  enable_half: true
-  %>
+<hr>
 
 <% end %>
 <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %> 

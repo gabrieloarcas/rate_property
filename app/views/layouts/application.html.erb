@@ -10,8 +10,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=&libraries=places" %> 
+    <!-- <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&libraries=places" %> -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <%= yield(:head_tags) %> 
   </head>
   
   <body>
@@ -21,6 +24,7 @@
     <div class='container-fluid'>
       <%= yield %>
     </div>
+  
     
   </body>
 </html>
