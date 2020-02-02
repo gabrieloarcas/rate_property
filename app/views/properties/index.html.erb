@@ -1,55 +1,76 @@
 <p id="notice"><%= notice %></p>
 
-<% @properties.each do |property| %>
+<div class='jumbotron text-center'>
+  <h1>Welcome to RentalProperty Hub</h1>
+  <p>some message...</p>
+</div>
 
-  <% if property.errors.any? %>
-    <div id="errors">
-      <h3><%= pluralize(property.errors.count, "error") %> ..something went wrong </h3>
+<div id="carousel-indicators" class="carousel slide" data-ride="carousel">
+
+  <div class="carousel-inner">
+          <% @properties.each_with_index do |property, i| %>
+    <div class="carousel-item <%= 'active' if i == 0%>">
+          <% if property.errors.any? %>
+            <div id="errors">
+              <h3><%= pluralize(property.errors.count, "error") %> ..something went wrong </h3>
+            </div>
+            <ul>
+              <% property.errors.full_messages.each do |msg| %>
+                <li> <%= msg %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_property_path(property) %>
+            <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+          <br>
+
+          <!-- Read Only Rating -->
+
+          Property Rating: <%= rating_for property, "property_score",
+          readOnly: true,
+          path: 'star_icons',
+          enable_half: true
+          %>
+
+          <!-- Show the author, update and created timestamps -->
+
+          <div>Created <%= time_ago_in_words(property.created_at) %> ago, 
+            by  <%= property.user_id  && property.user.nickname%>. 
+            <% if property.updated_at != property.created_at %> <!-- Showing updates only when updates are made -->
+            Edited <%= time_ago_in_words(property.updated_at)%> ago
+            <% end%>
+          </div>
+
+          <h3>Address: <%= link_to property.address, property %></h3>
+          <p> <%= property.reviews.count %> Reviews </p>
+
+          <% if property.reviews.present? %>
+            <p>Reviews</p>
+            <% property.reviews.limit(3).each do |review| %>
+            <div>
+              <p><%= time_ago_in_words(review.created_at) %> ago</p>
+              <div class = "text-info">
+                <p>From: <%= review.stayed_from.strftime('%b, %Y') %></p>
+                <p>To: <%= review.stayed_to.strftime('%b, %Y') %></p>
+                <p><%= excerpt(review.body, '', radius: 20) %></p>
+              </div>
+            </div>
+            <% end %>
+          <% else %>
+            <h4>No reviews yet</h4>
+          <% end %>
+
+          <%= link_to 'Leave a review', property_path(property) %>
+
+        <hr>
     </div>
-    <ul>
-      <% property.errors.full_messages.each do |msg| %>
-        <li> <%= msg %></li>
-      <% end %>
-    </ul>
-  <% end %>
+          <% end %>
+        
+  </div>
+</div>
 
-  <%= link_to 'Show', property %>
 
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_property_path(property) %>
-    <%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
-  <br>
-  <h3>Address: <%= link_to property.address, property %></h3>
-  <p> <%= property.reviews.count %> Reviews </p>
-
-  <% if property.reviews.present? %>
-    <p>Reviews</p>
-    <% property.reviews.limit(3).each do |review| %>
-    <div class="container">
-      <p><%= time_ago_in_words(review.created_at) %> ago</p>
-      <div class = "text-info">
-        <p>From: <%= review.stayed_from.strftime('%b, %Y') %></p>
-        <p>To: <%= review.stayed_to.strftime('%b, %Y') %></p>
-        <p><%= excerpt(review.body, '', radius: 20) %></p>
-      </div>
-    </div>
-    <% end %>
-  <% else %>
-    <h4>No reviews yet</h4>
-  <% end %>
-
-  <%= link_to 'Leave a review', property_path(property) %>
-  <hr>
-
-<!-- Read Only Rating -->
-
-  Property Rating: <%= rating_for property, "property_score",
-  readOnly: true,
-  path: 'star_icons',
-  enable_half: true
-  %>
-
-<% end %>
 <%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %> 
-
