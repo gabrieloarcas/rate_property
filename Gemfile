@@ -3,9 +3,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
-gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+#rating gem
 gem 'ratyrate', '~> 1.2.2.alpha'
+
+#auth gem
 gem 'devise', '~> 4.7', '>= 4.7.1'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use mysql as the database for Active Record

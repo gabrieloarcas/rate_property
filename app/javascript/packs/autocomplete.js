@@ -1,0 +1,1 @@
+import 'easy-autocomplete/dist/jquery.easy-autocomplete.js'
