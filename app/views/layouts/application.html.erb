@@ -11,6 +11,10 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <% provide :head_tags do %>
+      <meta name='turbolinks-visit-control' content='reload'> 
+    <% end %>
+    <%= yield(:head_tags) %>
   </head>
   
   <body>

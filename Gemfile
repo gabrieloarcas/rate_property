@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+#search
+gem 'ransack', '~> 2.3', '>= 2.3.2'
+
 #rating gem
 gem 'ratyrate', '~> 1.2.2.alpha'
 

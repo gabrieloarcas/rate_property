@@ -1,11 +1,23 @@
 class PropertiesController < ApplicationController
 
   before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :force_json, only: :search
 
   # GET /properties
   # GET /properties.json
   def index
     @properties = Property.all.order('created_at DESC')
+  end
+
+  def search
+    @properties = Property.ransack(address_cont: params[:q]).result(distinct: true)
+    
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @properties = @properties.limit(5)
+      }
+    end
   end
 
   # GET /properties/1
@@ -77,5 +89,9 @@ class PropertiesController < ApplicationController
         :address, :user_id, 
         reviews_attributes: [:id, :property_id, :stayed_from, :stayed_to, :body]
       )
+    end
+
+    def force_json
+      request.format = :json
     end
 end

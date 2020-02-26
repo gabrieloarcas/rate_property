@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="container-custom grey-border p-3">
-    <div id="carousel-indicators" class="carousel slide" data-ride="carousel">
+    <div id="carousel-indicators" class="carousel slide" data-lide="carousel">
       <div class="carousel-inner">
           <% @properties.each_with_index do |property, i| %>
         <div class="carousel-item <%= 'active' if i == 0%>">
@@ -81,5 +81,8 @@
     </div>
   </div>
 </div>
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %>
 
-<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track": false %> 
+
+
+
