@@ -11,6 +11,9 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
     <% provide :head_tags do %>
       <meta name='turbolinks-visit-control' content='reload'> 
     <% end %>
@@ -21,19 +24,7 @@
 
     <%= render 'layouts/navbar'%>
 
-    <div class='container-fluid'>
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="hero-img"><%= image_tag('house.webp', size:"300x250") %></div>
-            </div>
-              <div class="col m-4">
-                <h3 class="red-text">Welcome to RentalProperty Hub</h3><br>
-                <h5 class="text-shadow">Sed ut perspiciatis unde omnis iste natus.</h5>
-              <div>
-          </div>
-        </div>
-    
+    <div class='container-fluid'> 
       <%= yield %>
     </div>
     

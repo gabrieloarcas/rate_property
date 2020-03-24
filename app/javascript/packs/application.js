@@ -19,8 +19,14 @@ import './autocomplete'
 //import bootstrap
 import 'bootstrap'
 import '../stylesheets/application'
-
 import './carousel.js'
+
+//import navbar overlay effect
+import './navbar_overlay.js'
+
+//import custom scroll
+import 'jquery-mousewheel'
+import 'malihu-custom-scrollbar-plugin'
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

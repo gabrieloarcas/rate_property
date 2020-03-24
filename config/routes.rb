@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'static_pages/home'
+  get 'static_pages/about'
   get :search, controller: :properties
   post '/rate' => 'rater#create', as: 'rate'
   devise_for :users
@@ -6,5 +8,5 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
-  root "properties#index"
+  root "static_pages#home"
 end

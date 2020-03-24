@@ -1,80 +1,80 @@
-@import "colors";
+// @import "colors";
 
-body {
-  // background: $aluminum;
-  background: linear-gradient(
-    90deg,
-    rgba(233, 113, 0, 0.625) 0%,
-    rgba(232, 131, 0, 0.678) 55%,
-    rgb(247, 131, 96) 99%
-  );
-}
+// body {
+//   // background: $aluminum;
+//   background: linear-gradient(
+//     90deg,
+//     rgba(233, 113, 0, 0.625) 0%,
+//     rgba(232, 131, 0, 0.678) 55%,
+//     rgb(247, 131, 96) 99%
+//   );
+// }
 
-.nav-color {
-  background-color: $ruby-red;
-}
+// .nav-color {
+//   background-color: $ruby-red;
+// }
 
-li {
-  color: white !important;
-}
+// li {
+//   color: white !important;
+// }
 
-a,
-h5,
-h4,
-btn {
-  color: white !important;
-}
+// a,
+// h5,
+// h4,
+// btn {
+//   color: white !important;
+// }
 
-a:hover {
-  color: rgb(236, 118, 118) !important;
-  text-decoration: none;
-}
+// a:hover {
+//   color: rgb(236, 118, 118) !important;
+//   text-decoration: none;
+// }
 
-.hero-img {
-  height: 250px;
-  padding: 10px;
-}
+// .hero-img {
+//   height: 250px;
+//   padding: 10px;
+// }
 
-.hero-text {
-  padding: 20px;
-  height: 200px;
-}
+// .hero-text {
+//   padding: 20px;
+//   height: 200px;
+// }
 
-.container-custom {
-  display: flex;
-  width: 30em;
-  background: $ink;
-  border-radius: 4px;
-}
+// .container-custom {
+//   display: flex;
+//   width: 30em;
+//   background: $ink;
+//   border-radius: 4px;
+// }
 
-.red-text {
-  color: $ruby-red !important;
-  font-weight: 800;
-}
+// .red-text {
+//   color: $ruby-red !important;
+//   font-weight: 800;
+// }
 
-.text-shadow {
-  text-shadow: 2px 2px 5px $dim-grey;
-}
+// .text-shadow {
+//   text-shadow: 2px 2px 5px $dim-grey;
+// }
 
-.text-info {
-  width: 400px;
-  background: rgb(10, 0, 0);
-  padding: 5px;
-  border-radius: 5px;
-  margin: 10px;
-}
+// .text-info {
+//   width: 400px;
+//   background: rgb(10, 0, 0);
+//   padding: 5px;
+//   border-radius: 5px;
+//   margin: 10px;
+// }
 
-.grey-border {
-  border: 2px solid #40495cfd;
-}
+// .grey-border {
+//   border: 2px solid #40495cfd;
+// }
 
-.fixed-container {
-  height: 250px;
-  width: 440px;
-  padding: 3px;
-}
+// .fixed-container {
+//   height: 250px;
+//   width: 440px;
+//   padding: 3px;
+// }
 
-.container-content {
-  height: 240px;
-  overflow: auto;
-}
+// .container-content {
+//   height: 240px;
+//   overflow: auto;
+// }
